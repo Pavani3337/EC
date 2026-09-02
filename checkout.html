@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ECW - Checkout</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="home.css">
+
+</head>
+
+<body>
+
+
+    <!-- ==============================
+         NAVBAR
+    =============================== -->
+
+    <header class="navbar">
+
+        <div class="container nav-inner">
+
+            <a href="index.html" class="logo">
+                E<span>CW</span>
+            </a>
+
+            <button class="menu-btn">
+                ☰
+            </button>
+
+            <nav class="nav-links">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="products.html">
+                    Products
+                </a>
+
+                <a href="orders.html">
+                    Orders
+                </a>
+
+                <a href="login.html">
+                    Login
+                </a>
+
+                <a href="register.html">
+                    Register
+                </a>
+
+                <a href="cart.html">
+                    🛒 Cart
+                    (<span class="cart-count">0</span>)
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==============================
+         CHECKOUT
+    =============================== -->
+
+    <main>
+
+        <section class="container page-title">
+
+            <h1>
+                Checkout
+            </h1>
+
+            <p class="muted">
+                Enter your delivery details to continue.
+            </p>
+
+
+            <div class="form-box">
+
+                <h2>
+                    Delivery Details
+                </h2>
+
+
+                <form id="checkoutForm">
+
+
+                    <!-- FULL NAME -->
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter your name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- PHONE -->
+
+                    <div class="form-group">
+
+                        <label for="phone">
+                            Phone Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="Enter your phone number"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- ADDRESS -->
+
+                    <div class="form-group">
+
+                        <label for="address">
+                            Address
+                        </label>
+
+                        <textarea
+                            id="address"
+                            name="address"
+                            rows="4"
+                            placeholder="Enter delivery address"
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- CITY -->
+
+                    <div class="form-group">
+
+                        <label for="city">
+                            City
+                        </label>
+
+                        <input
+                            type="text"
+                            id="city"
+                            name="city"
+                            placeholder="Enter city"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- PIN CODE -->
+
+                    <div class="form-group">
+
+                        <label for="pincode">
+                            PIN Code
+                        </label>
+
+                        <input
+                            type="text"
+                            id="pincode"
+                            name="pincode"
+                            placeholder="Enter PIN code"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- TOTAL -->
+
+                    <div class="checkout-total">
+
+                        <h3>
+
+                            Total:
+
+                            <span id="checkoutTotal">
+                                ₹0
+                            </span>
+
+                        </h3>
+
+                    </div>
+
+
+                    <!-- BUTTON -->
+
+                    <button
+                        type="submit"
+                        class="btn success">
+
+                        Proceed to Payment
+
+                    </button>
+
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==============================
+         FOOTER
+    =============================== -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="footer-bottom">
+
+                © 2026 ECW.
+                All Rights Reserved.
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ==============================
+         JAVASCRIPT
+    =============================== -->
+
+    <script src="js/app.js"></script>
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+
+                /* ==============================
+                   UPDATE CART COUNT
+                =============================== */
+
+                if (
+                    typeof updateCartCount ===
+                    "function"
+                ) {
+
+                    updateCartCount();
+
+                }
+
+
+                /* ==============================
+                   UPDATE CHECKOUT TOTAL
+                =============================== */
+
+                updateCheckoutTotal();
+
+
+                /* ==============================
+                   CHECK CART
+                =============================== */
+
+                const cart =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "ecwCart"
+                        )
+                    ) || [];
+
+
+                if (cart.length === 0) {
+
+                    alert(
+                        "Your cart is empty."
+                    );
+
+                    window.location.href =
+                        "products.html";
+
+                    return;
+
+                }
+
+
+                /* ==============================
+                   CHECKOUT FORM
+                =============================== */
+
+                const form =
+                    document.getElementById(
+                        "checkoutForm"
+                    );
+
+
+                form.addEventListener(
+                    "submit",
+                    function (event) {
+
+                        event.preventDefault();
+
+
+                        /* ==============================
+                           GET CART AGAIN
+                        =============================== */
+
+                        const cart =
+                            JSON.parse(
+                                localStorage.getItem(
+                                    "ecwCart"
+                                )
+                            ) || [];
+
+
+                        if (cart.length === 0) {
+
+                            alert(
+                                "Your cart is empty."
+                            );
+
+                            window.location.href =
+                                "products.html";
+
+                            return;
+
+                        }
+
+
+                        /* ==============================
+                           GET CUSTOMER DETAILS
+                        =============================== */
+
+                        const formData =
+                            new FormData(form);
+
+
+                        const customer = {
+
+                            name:
+                                formData.get(
+                                    "name"
+                                ),
+
+                            phone:
+                                formData.get(
+                                    "phone"
+                                ),
+
+                            address:
+                                formData.get(
+                                    "address"
+                                ),
+
+                            city:
+                                formData.get(
+                                    "city"
+                                ),
+
+                            pincode:
+                                formData.get(
+                                    "pincode"
+                                )
+
+                        };
+
+
+                        /* ==============================
+                           CALCULATE SUBTOTAL
+                        =============================== */
+
+                        const subtotal =
+                            cart.reduce(
+                                function (
+                                    total,
+                                    item
+                                ) {
+
+                                    return (
+                                        total +
+                                        item.price *
+                                        item.quantity
+                                    );
+
+                                },
+                                0
+                            );
+
+
+                        /* ==============================
+                           SHIPPING
+                        =============================== */
+
+                        let shipping = 0;
+
+
+                        if (
+                            subtotal > 0 &&
+                            subtotal < 2000
+                        ) {
+
+                            shipping = 100;
+
+                        }
+
+
+                        /* ==============================
+                           TOTAL
+                        =============================== */
+
+                        const total =
+                            subtotal +
+                            shipping;
+
+
+                        /* ==============================
+                           SAVE CHECKOUT DATA
+                           
+                           We do NOT create an
+                           order yet.
+                        =============================== */
+
+                        const checkoutData = {
+
+                            customer:
+                                customer,
+
+                            items:
+                                cart,
+
+                            subtotal:
+                                subtotal,
+
+                            shipping:
+                                shipping,
+
+                            total:
+                                total
+
+                        };
+
+
+                        localStorage.setItem(
+
+                            "ecwCheckout",
+
+                            JSON.stringify(
+                                checkoutData
+                            )
+
+                        );
+
+
+                        /* ==============================
+                           GO TO PAYMENT PAGE
+                        =============================== */
+
+                        window.location.href =
+                            "payment.html";
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* =========================================
+           UPDATE CHECKOUT TOTAL
+        ========================================= */
+
+        function updateCheckoutTotal() {
+
+
+            const cart =
+                JSON.parse(
+                    localStorage.getItem(
+                        "ecwCart"
+                    )
+                ) || [];
+
+
+            /* ==============================
+               SUBTOTAL
+            ============================== */
+
+            const subtotal =
+                cart.reduce(
+                    function (
+                        total,
+                        item
+                    ) {
+
+                        return (
+                            total +
+                            item.price *
+                            item.quantity
+                        );
+
+                    },
+                    0
+                );
+
+
+            /* ==============================
+               SHIPPING
+            ============================== */
+
+            let shipping = 0;
+
+
+            if (
+                subtotal > 0 &&
+                subtotal < 2000
+            ) {
+
+                shipping = 100;
+
+            }
+
+
+            /* ==============================
+               TOTAL
+            ============================== */
+
+            const total =
+                subtotal +
+                shipping;
+
+
+            /* ==============================
+               DISPLAY TOTAL
+            ============================== */
+
+            const totalElement =
+                document.getElementById(
+                    "checkoutTotal"
+                );
+
+
+            if (totalElement) {
+
+                totalElement.textContent =
+                    `₹${total.toLocaleString(
+                        "en-IN"
+                    )}`;
+
+            }
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

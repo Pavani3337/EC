@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ECW - My Profile</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="home.css">
+
+</head>
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <div class="container nav-inner">
+
+            <a href="index.html" class="logo">
+                E<span>CW</span>
+            </a>
+
+            <button class="menu-btn">
+                ☰
+            </button>
+
+            <nav class="nav-links">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="products.html">
+                    Products
+                </a>
+
+                <a href="orders.html">
+                    Orders
+                </a>
+
+                <a href="profile.html">
+                    Profile
+                </a>
+
+                <a href="cart.html">
+                    🛒 Cart
+                    (<span class="cart-count">0</span>)
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- PROFILE -->
+
+    <main>
+
+        <section class="container page-title">
+
+            <h1>
+                My Profile
+            </h1>
+
+
+            <div class="form-box"
+                 style="margin:20px 0">
+
+                <h2>
+                    Account Information
+                </h2>
+
+
+                <div id="profileData">
+
+                    <!-- Profile data loaded by JavaScript -->
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="footer-bottom">
+
+                © 2026 ECW.
+                All Rights Reserved.
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                const user =
+                    JSON.parse(
+                        localStorage.getItem("ecwUser") || "null"
+                    );
+
+
+                const profile =
+                    document.getElementById("profileData");
+
+
+                if (user) {
+
+                    profile.innerHTML = `
+
+                        <p>
+                            <strong>Name:</strong>
+                            ${user.name}
+                        </p>
+
+                        <p>
+                            <strong>Email:</strong>
+                            ${user.email}
+                        </p>
+
+                        <br>
+
+                        <button
+                            class="btn danger"
+                            onclick="logout()"
+                        >
+                            Logout
+                        </button>
+
+                    `;
+
+                } else {
+
+                    profile.innerHTML = `
+
+                        <p>
+                            Please
+                            <a
+                                href="login.html"
+                                style="color:#2563eb"
+                            >
+                                login
+                            </a>
+                            first.
+                        </p>
+
+                    `;
+
+                }
+
+            }
+        );
+
+
+        function logout() {
+
+            localStorage.removeItem(
+                "ecwLoggedIn"
+            );
+
+            window.location.href =
+                "index.html";
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

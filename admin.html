@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ECW - Admin Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="home.css">
+
+</head>
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <div class="container nav-inner">
+
+            <a href="index.html" class="logo">
+                E<span>CW</span>
+            </a>
+
+            <button class="menu-btn">
+                ☰
+            </button>
+
+            <nav class="nav-links">
+
+                <a href="index.html">
+                    Store
+                </a>
+
+                <a href="products.html">
+                    Products
+                </a>
+
+                <a href="orders.html">
+                    Orders
+                </a>
+
+                <a href="admin.html">
+                    Admin
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- ADMIN DASHBOARD -->
+
+    <main>
+
+        <section class="container page-title">
+
+            <h1>
+                Admin Dashboard
+            </h1>
+
+            <p class="muted">
+                Manage your ECW store.
+            </p>
+
+
+            <!-- STATISTICS -->
+
+            <div class="admin-grid">
+
+
+                <div class="stat">
+
+                    <h3>
+                        Products
+                    </h3>
+
+                    <strong id="productCount">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <h3>
+                        Users
+                    </h3>
+
+                    <strong id="userCount">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <h3>
+                        Orders
+                    </h3>
+
+                    <strong id="orderCount">
+                        0
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- ADMIN MODULES -->
+
+            <div class="table-wrap">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Module
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+
+                        <tr>
+
+                            <td>
+                                Products
+                            </td>
+
+                            <td>
+
+                                <a
+                                    class="btn"
+                                    href="products.html"
+                                >
+                                    View Products
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Orders
+                            </td>
+
+                            <td>
+
+                                <a
+                                    class="btn"
+                                    href="orders.html"
+                                >
+                                    View Orders
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Store
+                            </td>
+
+                            <td>
+
+                                <a
+                                    class="btn secondary"
+                                    href="index.html"
+                                >
+                                    Open Store
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="footer-bottom">
+
+                © 2026 ECW Admin Panel.
+                All Rights Reserved.
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script src="js/admin.js"></script>
+
+</body>
+
+</html>

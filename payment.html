@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ECW - Payment</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="home.css">
+
+    <style>
+
+        .payment-box {
+            max-width: 650px;
+            margin: 30px auto;
+        }
+
+        .payment-summary {
+            background: #f8fafc;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .payment-summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+
+        .payment-summary-total {
+            border-top: 1px solid #ddd;
+            padding-top: 15px;
+            margin-top: 15px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .payment-method {
+            display: block;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 18px;
+            margin: 12px 0;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .payment-method:hover {
+            border-color: #2563eb;
+        }
+
+        .payment-method input {
+            margin-right: 12px;
+        }
+
+        .payment-method-content {
+            display: inline-block;
+        }
+
+        .payment-method-title {
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .payment-method-description {
+            display: block;
+            margin-top: 5px;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .payment-actions {
+            margin-top: 25px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ==============================
+     NAVBAR
+================================ -->
+
+<header class="navbar">
+
+    <div class="container nav-inner">
+
+        <a href="index.html" class="logo">
+            E<span>CW</span>
+        </a>
+
+        <button class="menu-btn">
+            ☰
+        </button>
+
+        <nav class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="products.html">
+                Products
+            </a>
+
+            <a href="orders.html">
+                Orders
+            </a>
+
+            <a href="login.html">
+                Login
+            </a>
+
+            <a href="register.html">
+                Register
+            </a>
+
+            <a href="cart.html">
+                🛒 Cart
+                (<span class="cart-count">0</span>)
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- ==============================
+     PAYMENT
+================================ -->
+
+<main>
+
+    <section class="container page-title">
+
+        <h1>
+            Payment
+        </h1>
+
+        <p class="muted">
+            Select your preferred payment method.
+        </p>
+
+
+        <div class="form-box payment-box">
+
+
+            <!-- ORDER SUMMARY -->
+
+            <h2>
+                Order Summary
+            </h2>
+
+
+            <div class="payment-summary">
+
+                <div class="payment-summary-row">
+
+                    <span>
+                        Subtotal
+                    </span>
+
+                    <strong id="paymentSubtotal">
+                        ₹0
+                    </strong>
+
+                </div>
+
+
+                <div class="payment-summary-row">
+
+                    <span>
+                        Shipping
+                    </span>
+
+                    <strong id="paymentShipping">
+                        FREE
+                    </strong>
+
+                </div>
+
+
+                <div class="payment-summary-row payment-summary-total">
+
+                    <span>
+                        Total
+                    </span>
+
+                    <strong id="paymentTotal">
+                        ₹0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- PAYMENT METHODS -->
+
+            <h2>
+                Payment Method
+            </h2>
+
+
+            <!-- UPI -->
+
+            <label class="payment-method">
+
+                <input
+                    type="radio"
+                    name="paymentMethod"
+                    value="UPI"
+                >
+
+                <span class="payment-method-content">
+
+                    <span class="payment-method-title">
+                        UPI
+                    </span>
+
+                    <span class="payment-method-description">
+                        Pay using Google Pay, PhonePe,
+                        Paytm or another UPI app.
+                    </span>
+
+                </span>
+
+            </label>
+
+
+            <!-- CREDIT / DEBIT CARD -->
+
+            <label class="payment-method">
+
+                <input
+                    type="radio"
+                    name="paymentMethod"
+                    value="Credit/Debit Card"
+                >
+
+                <span class="payment-method-content">
+
+                    <span class="payment-method-title">
+                        Credit / Debit Card
+                    </span>
+
+                    <span class="payment-method-description">
+                        Pay securely using your card.
+                    </span>
+
+                </span>
+
+            </label>
+
+
+            <!-- NET BANKING -->
+
+            <label class="payment-method">
+
+                <input
+                    type="radio"
+                    name="paymentMethod"
+                    value="Net Banking"
+                >
+
+                <span class="payment-method-content">
+
+                    <span class="payment-method-title">
+                        Net Banking
+                    </span>
+
+                    <span class="payment-method-description">
+                        Pay through your bank account.
+                    </span>
+
+                </span>
+
+            </label>
+
+
+            <!-- CASH ON DELIVERY -->
+
+            <label class="payment-method">
+
+                <input
+                    type="radio"
+                    name="paymentMethod"
+                    value="Cash on Delivery"
+                >
+
+                <span class="payment-method-content">
+
+                    <span class="payment-method-title">
+                        Cash on Delivery
+                    </span>
+
+                    <span class="payment-method-description">
+                        Pay when your order is delivered.
+                    </span>
+
+                </span>
+
+            </label>
+
+
+            <!-- PAYMENT ACTIONS -->
+
+            <div class="payment-actions">
+
+                <button
+                    type="button"
+                    id="payButton"
+                    class="btn success">
+
+                    Pay Now
+
+                </button>
+
+
+                <button
+                    type="button"
+                    id="backButton"
+                    class="btn secondary">
+
+                    Back to Checkout
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- ==============================
+     FOOTER
+================================ -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-bottom">
+
+            © 2026 ECW. All Rights Reserved.
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- ==============================
+     JAVASCRIPT
+================================ -->
+
+<script src="js/app.js"></script>
+
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+
+        /* ==============================
+           CART COUNT
+        ============================== */
+
+        if (
+            typeof updateCartCount ===
+            "function"
+        ) {
+
+            updateCartCount();
+
+        }
+
+
+        /* ==============================
+           GET CHECKOUT DATA
+        ============================== */
+
+        const checkoutData =
+            JSON.parse(
+                localStorage.getItem(
+                    "ecwCheckout"
+                )
+            );
+
+
+        if (!checkoutData) {
+
+            alert(
+                "Checkout information not found."
+            );
+
+            window.location.href =
+                "cart.html";
+
+            return;
+
+        }
+
+
+        /* ==============================
+           DISPLAY SUBTOTAL
+        ============================== */
+
+        document.getElementById(
+            "paymentSubtotal"
+        ).textContent =
+            `₹${checkoutData.subtotal.toLocaleString(
+                "en-IN"
+            )}`;
+
+
+        /* ==============================
+           DISPLAY SHIPPING
+        ============================== */
+
+        document.getElementById(
+            "paymentShipping"
+        ).textContent =
+
+            checkoutData.shipping === 0
+
+                ? "FREE"
+
+                : `₹${checkoutData.shipping.toLocaleString(
+                    "en-IN"
+                )}`;
+
+
+        /* ==============================
+           DISPLAY TOTAL
+        ============================== */
+
+        document.getElementById(
+            "paymentTotal"
+        ).textContent =
+            `₹${checkoutData.total.toLocaleString(
+                "en-IN"
+            )}`;
+
+
+        /* ==============================
+           PAYMENT METHOD CHANGE
+        ============================== */
+
+        const paymentMethods =
+            document.querySelectorAll(
+                'input[name="paymentMethod"]'
+            );
+
+
+        const payButton =
+            document.getElementById(
+                "payButton"
+            );
+
+
+        paymentMethods.forEach(
+            function (method) {
+
+                method.addEventListener(
+                    "change",
+                    function () {
+
+
+                        if (
+                            this.value ===
+                            "Cash on Delivery"
+                        ) {
+
+                            payButton.textContent =
+                                "Place Order";
+
+                        } else {
+
+                            payButton.textContent =
+                                "Pay Now";
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* ==============================
+           PAY / PLACE ORDER
+        ============================== */
+
+        payButton.addEventListener(
+            "click",
+            function () {
+
+
+                /* ==============================
+                   GET SELECTED METHOD
+                ============================== */
+
+                const selectedMethod =
+                    document.querySelector(
+                        'input[name="paymentMethod"]:checked'
+                    );
+
+
+                if (!selectedMethod) {
+
+                    alert(
+                        "Please select a payment method."
+                    );
+
+                    return;
+
+                }
+
+
+                /* ==============================
+                   PAYMENT METHOD
+                ============================== */
+
+                const paymentMethod =
+                    selectedMethod.value;
+
+
+                /* ==============================
+                   PAYMENT STATUS
+                ============================== */
+
+                let paymentStatus;
+
+
+                if (
+                    paymentMethod ===
+                    "Cash on Delivery"
+                ) {
+
+                    paymentStatus =
+                        "Pending";
+
+                } else {
+
+                    paymentStatus =
+                        "Paid";
+
+                }
+
+
+                /* ==============================
+                   GET EXISTING ORDERS
+                ============================== */
+
+                let orders =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "ecwOrders"
+                        )
+                    ) || [];
+
+
+                /* ==============================
+                   CREATE ORDER
+                ============================== */
+
+                const order = {
+
+                    id:
+                        "ECW" +
+                        Date.now(),
+
+                    date:
+                        new Date().toLocaleString(
+                            "en-IN"
+                        ),
+
+                    status:
+                        "Confirmed",
+
+                    paymentMethod:
+                        paymentMethod,
+
+                    paymentStatus:
+                        paymentStatus,
+
+                    customer:
+                        checkoutData.customer,
+
+                    items:
+                        checkoutData.items,
+
+                    subtotal:
+                        checkoutData.subtotal,
+
+                    shipping:
+                        checkoutData.shipping,
+
+                    total:
+                        checkoutData.total
+
+                };
+
+
+                /* ==============================
+                   SAVE ORDER
+                ============================== */
+
+                orders.push(order);
+
+
+                localStorage.setItem(
+
+                    "ecwOrders",
+
+                    JSON.stringify(
+                        orders
+                    )
+
+                );
+
+
+                /* ==============================
+                   CLEAR CART
+                ============================== */
+
+                localStorage.removeItem(
+                    "ecwCart"
+                );
+
+
+                /* ==============================
+                   CLEAR CHECKOUT DATA
+                ============================== */
+
+                localStorage.removeItem(
+                    "ecwCheckout"
+                );
+
+
+                /* ==============================
+                   GO TO SUCCESS PAGE
+                ============================== */
+
+                window.location.href =
+                    "payment-success.html";
+
+            }
+        );
+
+
+        /* ==============================
+           BACK TO CHECKOUT
+        ============================== */
+
+        document.getElementById(
+            "backButton"
+        ).addEventListener(
+            "click",
+            function () {
+
+                window.location.href =
+                    "checkout.html";
+
+            }
+        );
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

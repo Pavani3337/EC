@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ECW - Payment Failed</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="home.css">
+
+</head>
+
+
+<body>
+
+
+<header class="navbar">
+
+    <div class="container nav-inner">
+
+        <a href="index.html" class="logo">
+            E<span>CW</span>
+        </a>
+
+
+        <nav class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="products.html">
+                Products
+            </a>
+
+            <a href="orders.html">
+                Orders
+            </a>
+
+            <a href="login.html">
+                Login
+            </a>
+
+            <a href="register.html">
+                Register
+            </a>
+
+            <a href="cart.html">
+                🛒 Cart
+                (<span class="cart-count">0</span>)
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+
+<main>
+
+    <section class="container page-title">
+
+
+        <div
+            class="form-box"
+            style="text-align:center;">
+
+
+            <div
+                style="
+                    font-size:60px;
+                    color:#dc2626;
+                    margin-bottom:15px;
+                ">
+
+                ✕
+
+            </div>
+
+
+            <h2>
+                Payment Failed
+            </h2>
+
+
+            <p class="muted">
+
+                Unfortunately, your payment
+                could not be completed.
+
+            </p>
+
+
+            <p class="muted">
+
+                Your cart items are still available.
+                Please try again.
+
+            </p>
+
+
+            <br>
+
+
+            <a
+                href="payment.html"
+                class="btn">
+
+                Try Again
+
+            </a>
+
+
+            <a
+                href="cart.html"
+                class="btn secondary">
+
+                Back to Cart
+
+            </a>
+
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-bottom">
+
+            © 2026 ECW. All Rights Reserved.
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script src="js/app.js"></script>
+
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        updateCartCount();
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>
